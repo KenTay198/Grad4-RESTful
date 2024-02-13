@@ -1,19 +1,18 @@
-import express from 'express';
-import morgan  from 'morgan';
+import express from "express";
+import morgan from "morgan";
+import connect from "./db/connect.js";
+import api from "#src/routes/api/index";
 
-import api     from '#src/routes/api/index';
+const app = express();
+app.use(morgan("dev"));
+app.use(express.json());
 
-import connect from './db/connect.js';
-const app = express()
-connect()
-app.use(morgan('dev'))
-app.use(express.json())
+connect();
 
-app.get('/', (req, res) => {
-  res.json({ message: 'yeah 👩‍🎤'})
+app.get("/", (req, res) => {
+  res.json({ message: "yeah 👩‍🎤" });
 });
 
-app.use('/api/v1', api)
+app.use("/api/v1", api);
 
-
-export default app
+export default app;
