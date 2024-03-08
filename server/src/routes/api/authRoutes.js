@@ -1,13 +1,9 @@
-import express from "express";
+import express from 'express';
+import authController from '#src/controllers/authController'
 
 const router = express.Router();
 
-router.get("/login", async (req, res) => {
-  res.send("logged in");
-});
-
-router.get("/logout", async (req, res) => {
-  res.send("logged out");
-});
+// v1/api/auth/login
+router.post('/login',authController.login);
 
 export default router;
